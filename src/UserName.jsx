@@ -2,8 +2,10 @@ import { useUserQuery } from './hooks/useUserQuery';
 import { useState } from 'react';
 
 export default function UserName() {
-  const { isSuccess, data } = useUserQuery(1);
+  const { isSuccess: isSuccess1, data: data1 } = useUserQuery(1);
+  //const { isSuccess: isSuccess2, data: data2 } = useUserQuery(2);
   const [Num, setNum] = useState(0);
+  console.log(data1);
 
   return (
     <div className="UserName">
@@ -11,7 +13,7 @@ export default function UserName() {
       <p>{Num}</p>
       <button onClick={() => setNum(Num + 1)}>plus</button>
 
-      <h2>{isSuccess && data.name}</h2>
+      <h2>name1:{isSuccess1 && data1.name}</h2>
     </div>
   );
 }

@@ -2,7 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 
 const fetchUser = async ({ queryKey }) => {
   console.log(queryKey);
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/users/${queryKey[1]}`
+  );
   return await response.json();
 };
 
