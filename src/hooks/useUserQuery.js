@@ -14,8 +14,8 @@ export const useUserQuery = (num) => {
   return useQuery(['users', num], fetchUser, {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
-    cacheTime: 1000 * 5,
-    staleTime: 1000 * 5,
+    cacheTime: 1000 * 20, //해당 데이터를 컴포넌트에서 활용하지 않더라도 얼마동안 gc에 의한 데이터삭제를 막는 시간값 설정
+    staleTime: 1000 * 5, //얼마동안 refetching을 하지 않을지에 대한  시간값 설정
   });
 };
 

@@ -11,7 +11,7 @@ export default function UserName() {
       <button onClick={() => setNum(1)}>변경1</button>
       <button onClick={() => setNum(2)}>변경2</button>
 
-      <h2>name1:{isSuccess && data.name}</h2>
+      <h2>name:{isSuccess && data.name}</h2>
     </div>
   );
 }
