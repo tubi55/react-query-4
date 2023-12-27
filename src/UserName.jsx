@@ -1,22 +1,27 @@
-import { useDeleteQuery, useUserQuery } from './hooks/useUserQuery';
+import { useState } from 'react';
+import { useUpdateUser, useUserQuery } from './hooks/useUserQuery';
 
 export default function UserName() {
   const { isSuccess, data } = useUserQuery();
-  console.log(data);
+  const updateUser = useUpdateUser();
+  const [UserName, setUserName] = useState('');
 
-  const deleteUser = useDeleteQuery();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateUser.mutate([UserName, 2]);
+  };
 
   return (
     <div className="UserName">
       <h1>User Name</h1>
 
-      <button
-        onClick={() => {
-          deleteUser.mutate(2);
-        }}
-      >
-        유저데이터 삭제
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={UserName || ''}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+      </form>
 
       <ul>
         {isSuccess ? (
