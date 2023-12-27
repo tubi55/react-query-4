@@ -1,11 +1,22 @@
-import { useUserQuery } from './hooks/useUserQuery';
+import { useDeleteQuery, useUserQuery } from './hooks/useUserQuery';
 
 export default function UserName() {
   const { isSuccess, data } = useUserQuery();
+  console.log(data);
+
+  const deleteUser = useDeleteQuery();
 
   return (
     <div className="UserName">
       <h1>User Name</h1>
+
+      <button
+        onClick={() => {
+          deleteUser.mutate(2);
+        }}
+      >
+        유저데이터 삭제
+      </button>
 
       <ul>
         {isSuccess ? (
